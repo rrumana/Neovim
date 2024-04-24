@@ -1,5 +1,5 @@
 # Neovim
-My current Neovim Setup
+This was my setup as of a few weeks ago. I decided I would spend a month or two wsith it to see what I like, dislike, and what needs to be changed. I am in the process of remapping things to better suit my needs and habits, expect an update to this repository soon.
 
 This will be a very dynamic repo  as I explore Neovim over the coming months.
 
