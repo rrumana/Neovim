@@ -80,3 +80,17 @@ vim.keymap.set("i", "<C-z>", "<Esc>ui")
 -- Mapping redo
 vim.keymap.set("v", "<C-r>", "<Esc><C-r>v")
 vim.keymap.set("i", "<C-r>", "<Esc><C-r>a")
+
+-- Removing arrow keys in all modes
+vim.keymap.set("n", "<Up>", ":echoe 'Use k'<CR>")
+vim.keymap.set("n", "<Down>", ":echoe 'Use j'<CR>")
+vim.keymap.set("n", "<Left>", ":echoe 'Use h'<CR>")
+vim.keymap.set("n", "<Right>", ":echoe 'Use l'<CR>")
+vim.keymap.set("v", "<Up>", "<Esc>:echoe 'Use k'<CR>")
+vim.keymap.set("v", "<Down>", "<Esc>:echoe 'Use j'<CR>")
+vim.keymap.set("v", "<Left>", "<Esc>:echoe 'Use h'<CR>")
+vim.keymap.set("v", "<Right>", "<Esc>:echoe 'Use l'<CR>")
+vim.keymap.set("i", "<Up>", "<Esc>:echoe 'Use k'<CR>")
+vim.keymap.set("i", "<Down>", "<Esc>:echoe 'Use j'<CR>")
+vim.keymap.set("i", "<Left>", "<Esc>:echoe 'Use h'<CR>")
+vim.keymap.set("i", "<Right>", "<Esc>:echoe 'Use l'<CR>")

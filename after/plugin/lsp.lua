@@ -19,7 +19,7 @@ end)
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require'lspconfig'.ccls.setup{}
-require'lspconfig'.golangci_lint_ls.setup{}
+require'lspconfig'.gopls.setup{}
 require('mason-lspconfig').setup({
   ensure_installed = {'rust_analyzer'},
   handlers = {
