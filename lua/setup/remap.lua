@@ -94,3 +94,7 @@ vim.keymap.set("i", "<Up>", "<Esc>:echoe 'Use k'<CR>")
 vim.keymap.set("i", "<Down>", "<Esc>:echoe 'Use j'<CR>")
 vim.keymap.set("i", "<Left>", "<Esc>:echoe 'Use h'<CR>")
 vim.keymap.set("i", "<Right>", "<Esc>:echoe 'Use l'<CR>")
+
+-- Removing all mouse inputs from Neovim
+vim.opt.mouse = ""
+vim.opt.mousescroll = "ver:0,hor:0"
