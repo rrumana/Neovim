@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('filetype', {
   callback = function()
     local bind = function(lhs, rhs)
       vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
-    end 
+    end
 
     -- edit new file
     bind('n', '%')
@@ -31,9 +31,9 @@ vim.keymap.set("v", "E", "$") -- Make E the EOL character instead of $
 vim.keymap.set("n", "B", "0") -- Make B the BOL character instead of 0
 vim.keymap.set("v", "B", "0") -- Make B the BOL character instead of 0
 vim.keymap.set("i", "<Esc>", function()
-    if vim.fn.col(".") == 1 then 
+    if vim.fn.col(".") == 1 then
         return "<Esc>"
-    else 
+    else
         return "<Esc>l"
     end
 end, {noremap = true, expr = true, silent = true}) -- Move cursor to the right when exiting insert mode
@@ -52,9 +52,9 @@ vim.keymap.set("v", "<leader>c", "\"+y")  -- Copy selected text to clipboard (vi
 vim.keymap.set("n", "<C-v>", "P") -- Put from buffer (normal mode)
 vim.keymap.set("v", "<C-v>", "P") -- Put from buffer (visual mode)
 vim.keymap.set("i", "<C-v>", function()
-    if vim.fn.col(".") == 1 then 
+    if vim.fn.col(".") == 1 then
         return "<Esc>Pa"
-    else 
+    else
         return "<Esc>pa"
     end
 end, {noremap = true, expr = true, silent = true}) -- Put from buffer (insert mode)
@@ -94,7 +94,3 @@ vim.keymap.set("i", "<Up>", "<Esc>:echoe 'Use k'<CR>")
 vim.keymap.set("i", "<Down>", "<Esc>:echoe 'Use j'<CR>")
 vim.keymap.set("i", "<Left>", "<Esc>:echoe 'Use h'<CR>")
 vim.keymap.set("i", "<Right>", "<Esc>:echoe 'Use l'<CR>")
-
--- Removing all mouse inputs from Neovim
-vim.opt.mouse = ""
-vim.opt.mousescroll = "ver:0,hor:0"

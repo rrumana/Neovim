@@ -29,3 +29,13 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 10
 
 vim.opt.colorcolumn = "80"
+
+local set = vim.opt
+
+vim.wo.number = true
+
+set.backspace = '2'
+set.showcmd = true
+set.laststatus = 2
+set.autowrite = true
+set.autoread = true
