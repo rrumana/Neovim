@@ -1,8 +1,6 @@
 # Neovim
-This was my setup as of a few weeks ago. I decided I would spend a month or two wsith it to see what I like, dislike, and what needs to be changed. I am in the process of remapping things to better suit my needs and habits, expect an update to this repository soon.
 
-This will be a very dynamic repo  as I explore Neovim over the coming months.
+I have finally updated away from packer.nvim after a few years of development using it. I really enjoyed the simplicity of packer, if it were still maintained I would still be using it. I have replaced it with Lazy.nvim, which has active development, a thriving community, and more features even if I won't use many of them often.
 
-This Neovim config was inspired by the Primeagen's Neovim config video. I haven't made many changes yet but I plan to change many of the keybinds to better suit my typing habits. I also plan to add some different plugins and whatnot. I will add a more detaild list of plugins and config details later.
-
-I am currently experimenting with Copilot turnd off, I will post my thoughts on that here.
+Copilot review:
+Copilot is a pretty good tool all things considered, but it is not something I would keep on all the time. It is wonderful for autofilling in simple methods from the function signature and creating unit tests, but I find it to be not worth much more than that. It still halucinates often on syntax, and is less useful than an LSP when it comes to autocomplete for less common function calls. Copilot also has the downside of being behind on the times when it comes to certain plugins, packages, and crates. If a project dependency has switched from version 1.0 to 2.0 between the model's training time and now it is near useless, which is difficult for me since I like to operate in the the Rust machine learning field, which is changing quickly and has a relatively small userbase compared to things copilot is good at like React, CSS, and Python.
