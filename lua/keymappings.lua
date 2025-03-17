@@ -1,6 +1,3 @@
--- Defining a leader character, which will preface some commands
-vim.g.mapleader = " "
-
 -- Open directory manager / filetree (normal mode)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -20,6 +17,99 @@ vim.api.nvim_create_autocmd('filetype', {
     bind('r', 'R')
   end
 })
+
+-- Fugitive mappings
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
+vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
+
+-- Harpoon mappings
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-M>", function() harpoon:list():next() end)
+
+-- Telescope mappings
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>pws', function()
+    local word = vim.fn.expand("<cword>")
+    builtin.grep_string({ search = word })
+end)
+vim.keymap.set('n', '<leader>pWs', function()
+    local word = vim.fn.expand("<cWORD>")
+    builtin.grep_string({ search = word })
+end)
+vim.keymap.set('n', '<leader>ps', function()
+    builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
+-- Undotree mappings
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- Trouble mappings
+vim.keymap.set("n", "<leader>xx", function()
+    require("trouble").toggle()
+end)
+
+vim.keymap.set("n", "[t", function()
+    require("trouble").next({skip_groups = true, jump = true});
+end)
+
+vim.keymap.set("n", "]t", function()
+    require("trouble").previous({skip_groups = true, jump = true});
+end)
+
+-- TreeSitter mappings
+require("nvim-treesitter.configs").setup({
+    -- A list of parser names, or "all"
+    ensure_installed = {
+        "vimdoc", "javascript", "typescript", "c", "lua", "rust",
+        "jsdoc", "bash", "python", "java", "json", "html", "css",
+        "go", "yaml", "toml", "cpp"
+    },
+
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
+    auto_install = true,
+
+    indent = {
+        enable = true
+    },
+
+    highlight = {
+        -- `false` will disable the whole extension
+        enable = true,
+
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = { "markdown" },
+    },
+})
+
+local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+treesitter_parser_config.templ = {
+    install_info = {
+        url = "https://github.com/vrischmann/tree-sitter-templ.git",
+        files = {"src/parser.c", "src/scanner.c"},
+        branch = "master",
+    },
+}
+
+vim.treesitter.language.register("templ", "templ")
 
 -- Mapping moving highlighted text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
