@@ -1,13 +1,6 @@
--- Colorscheme
-    config = function()
-        local harpoon = require("harpoon")
-
-        -- REQUIRED
-        harpoon:setup()
-    end,
-
+-- Colors
 vim.cmd("colorscheme darkplus")
-vim.cmd.colorscheme(color)
+vim.cmd.colorscheme('darkplus')
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
@@ -135,7 +128,17 @@ require('telescope').setup({})
 
 -- Trouble
 require("trouble").setup({
-    icons = false,
+  modes = {
+    test = {
+      mode = "diagnostics",
+      preview = {
+        type = "split",
+        relative = "win",
+        position = "right",
+        size = 0.3,
+      },
+    },
+  },
 })
 
 -- Treesitter
@@ -144,7 +147,7 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "vimdoc", "javascript", "typescript", "c", "lua", "rust",
         "jsdoc", "bash", "python", "java", "json", "html", "css",
-        "go", "yaml", "toml", "cpp"
+        "go", "yaml", "toml", "cpp", "markdown", "markdown_inline",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
